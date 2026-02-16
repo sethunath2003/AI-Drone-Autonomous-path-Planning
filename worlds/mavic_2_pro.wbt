@@ -14,6 +14,7 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/trees/protos/Pine.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/objects/trees/protos/Forest.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/robots/dji/mavic/protos/Mavic2Pro.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2025a/projects/devices/hokuyo/protos/HokuyoUrg04lxug01.proto"
 
 WorldInfo {
   info [
@@ -150,15 +151,29 @@ Forest {
   minRadius 3
 }
 Mavic2Pro {
-  hidden position_0_0 4.244223648129006e-11
-  hidden position_6_0 -2.5116439648432738e-08
-  hidden rotation_7 0 -0.9999999999999999 0 2.9802322387695313e-08
-  hidden position_7_0 8.719220615663042e-08
-  hidden rotation_8 1 0 0 8.940696716308595e-08
   translation -27.580013762604526 58.044152315184846 0.06570872787430103
   rotation 0.03480505280743069 -0.058551585951463196 0.9976774629516497 1.0746452466663707
+  controller "mavic2pro_v6"
   bodySlot [
     Lidar {
+      translation 0 0 0.1
+      name "lidar"
+      horizontalResolution 512
+      fieldOfView 3.14159
+      minRange 0.2
+      maxRange 10
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0 0
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.05 0.05 0.05
+          }
+        }
+      ]
     }
   ]
   cameraSlot [
